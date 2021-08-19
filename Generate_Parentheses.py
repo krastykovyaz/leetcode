@@ -15,6 +15,6 @@ class Solution:
 
 
 if __name__=='__main__':
-    n = 500
+    n = 10
     s = Solution()
     print(len(s.GenParenthesis(n)))

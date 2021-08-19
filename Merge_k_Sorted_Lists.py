@@ -7,8 +7,8 @@ class ListAlone:
 
 class Solution:
     def Merge2Lists(self, l1: ListAlone, l2: ListAlone)-> ListAlone:
-        dummy = ListAlone()
-        p = dummy
+        head = ListAlone()
+        p = head
         while l1 and l2:
             if l1.val < l2.val:
                 p.next = l1
@@ -17,20 +17,16 @@ class Solution:
                 p.next = l2
                 l2 = l2.next
             p = p.next
-        if l2:
-            p.next = l2
         if l1:
             p.next = l1
-        return dummy.next
-
-
-
+        if l2:
+            p.next = l2
+        return head.next
 
     def GenSortedList(self, lists: List[ListAlone])->ListAlone:
-        n = len(lists)
         L = ListAlone()
         dummy = L
-        for i in range(n):
+        for i in range(len(lists)):
             current = self.Merge2Lists(dummy.next, lists[i])
             dummy.next = current
             dummy = dummy.next
@@ -41,19 +37,14 @@ if __name__ == '__main__':
     s = Solution()
     lists = [[1,4,5],[1,3,4],[2,6],[8,9]]
     linked_list = []
-    # dummy = ListAlone()
-    # p = dummy
     for l in lists:
-        start = ListAlone(l[0])
-        node = start
-        for val_in_l in l[1:]:
-            current = ListAlone(val_in_l)
-            node.next = current
-            node = node.next
-        # p.next = start
-        # while p.next:
-        #     p = p.next
-        linked_list.append(start)
+        head = ListAlone(l[0])
+        tmp = head
+        for item in l[1:]:
+            dummy = ListAlone(item)
+            tmp.next = dummy
+            tmp = tmp.next
+        linked_list.append(head)
     node = s.GenSortedList(linked_list)
     index = 0
     while node:
