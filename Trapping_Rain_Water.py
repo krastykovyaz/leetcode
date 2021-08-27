@@ -22,6 +22,8 @@ class Solution:
 
 
 
+
+
 if __name__ == '__main__':
     s = Solution()
     height = [4,2,0,3,2,5]

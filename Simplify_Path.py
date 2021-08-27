@@ -2,7 +2,6 @@ class Solution:
     def SimplePath(self, path: str)-> str:
         path_list = path.split('/')
         new_path = []
-        print(path_list)
         for word in path_list:
             if new_path and word == "..":
                 new_path.pop()

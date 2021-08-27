@@ -12,21 +12,22 @@ class Solution:
         dummy = head
         index = 0
         while dummy:
-            index += 1
             dummy = dummy.next
+            index += 1
         prev = None
         tail = head
-        while tail:
+        while tail != None:
             if n == index:
                 if prev:
                     prev.next = tail.next
                     return head
                 else:
-                    tail.next
+                    return tail.next
             prev = tail
             tail = tail.next
             index -= 1
         return head
+
 
 
 
@@ -35,10 +36,11 @@ if __name__ == '__main__':
     head = [1, 2, 3, 4, 5]
     n = 2
     L = ListAlone(head[0])
-    dummy = L
-    for i in range(1, len(head)):
-        dummy.next = ListAlone(head[i])
-        dummy = dummy.next
+    tmp = L
+    for item in head[1:]:
+        dummy = ListAlone(item)
+        tmp.next = dummy
+        tmp = tmp.next
     node = s.RemoveNode(L, n)
     while node:
         print(node.val)

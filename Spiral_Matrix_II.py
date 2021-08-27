@@ -4,8 +4,8 @@ class Solution:
         if not n:
             return []
         res = [[0 for _ in range(n)] for _ in range(n)]
-        top, down,left, right, num = 0, n-1, 0, n-1, 1
-        while top <= down and left <= right:
+        right, left, down, top, num = n-1,0,n-1,0,1
+        while left <= right and top <= down:
             for i in range(left, right + 1):
                 res[top][i] = num
                 num += 1
@@ -23,6 +23,8 @@ class Solution:
                 num += 1
             left += 1
         return res
+
+
 
 
 

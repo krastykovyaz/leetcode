@@ -1,22 +1,23 @@
 from typing import List
 class Solution:
     def FindRectangle(self, matrix: List[List[str]]) -> int:
-        if not matrix or matrix == [0]:
+        if not matrix or not matrix[0]:
             return 0
         n = len(matrix[0])
         height = [0] * (n + 1)
-        asr = 0
+        ans = 0
         for row in matrix:
             for i in range(n):
                 height[i] = height[i] + 1 if row[i] == '1' else 0
             stack = [-1]
             for i in range(n + 1):
                 while height[i] < height[stack[-1]]:
-                    h = height[stack.pop()]
+                    pop = stack.pop()
+                    h = height[pop]
                     w = i - 1 - stack[-1]
-                    asr = max(asr, w * h)
+                    ans = max(ans, w * h)
                 stack.append(i)
-        return asr
+        return ans
 
 
 

@@ -25,22 +25,23 @@ class Solution:
 
     def GenSortedList(self, lists: List[ListAlone])->ListAlone:
         L = ListAlone()
-        dummy = L
-        for i in range(len(lists)):
-            current = self.Merge2Lists(dummy.next, lists[i])
-            dummy.next = current
+        tmp = L
+        for l in lists:
+            dummy = self.Merge2Lists(l, tmp.next)
+            tmp.next = dummy
             dummy = dummy.next
         return L.next
+
 
 
 if __name__ == '__main__':
     s = Solution()
     lists = [[1,4,5],[1,3,4],[2,6],[8,9]]
     linked_list = []
-    for l in lists:
-        head = ListAlone(l[0])
+    for height in lists:
+        head = ListAlone(height[0])
         tmp = head
-        for item in l[1:]:
+        for item in height[1:]:
             dummy = ListAlone(item)
             tmp.next = dummy
             tmp = tmp.next

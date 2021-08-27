@@ -1,6 +1,7 @@
 from typing import List
 import timeit
 
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         """
@@ -15,9 +16,9 @@ class Solution:
         return []
 
 
-if __name__=='__main__':
-    nums = [3,3]
+if __name__ == '__main__':
+    nums = [3, 3]
     target = 6
     s = Solution()
-    print(s.twoSum(nums,target))
-    print(timeit.timeit(lambda: s.twoSum(nums,target), number=1))
+    print(s.twoSum(nums, target))
+    print(timeit.timeit(lambda: s.twoSum(nums, target), number=1))
