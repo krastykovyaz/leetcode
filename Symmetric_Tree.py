@@ -4,20 +4,17 @@ class NodeTree():
         self.left = left
         self.val = val
 
-
 class Solution:
-    def IsSymmetric(self, root: NodeTree) -> bool:
+    def IsSymmetric(self, root: NodeTree)-> bool:
         return self.IsMirror(root, root)
 
-    def IsMirror(self, r1: NodeTree, r2: NodeTree) -> bool:
+    def IsMirror(self, r1, r2):
         if r1 is None and r2 is None:
             return True
         if r1 is not None and r2 is not None:
             if r1.val == r2.val:
-                return self.IsMirror(r1.left, r2.right) and self.IsMirror(r1.right, r2.left)
+              return self.IsMirror(r1.left, r2.right) and self.IsMirror(r1.right, r2.left)
         return False
-
-
 
 
 def gen_nodes(temp, data):
