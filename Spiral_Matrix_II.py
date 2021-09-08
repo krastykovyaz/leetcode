@@ -1,10 +1,12 @@
 from typing import List
+
+
 class Solution:
-    def GenSpiral(self, n: int)-> List[List[int]]:
+    def GenSpiral(self, n: int) -> List[List[int]]:
         if not n:
             return []
         res = [[0 for _ in range(n)] for _ in range(n)]
-        right, left, down, top, num = n-1,0,n-1,0,1
+        left, right, top, down, num = 0, n - 1, 0, n - 1, 1
         while left <= right and top <= down:
             for i in range(left, right + 1):
                 res[top][i] = num
@@ -25,11 +27,7 @@ class Solution:
         return res
 
 
-
-
-
-
-if __name__=='__main__':
+if __name__ == '__main__':
     s = Solution()
     n = 3
     print(s.GenSpiral(n))

@@ -14,10 +14,10 @@ class Solution:
         while dummy:
             dummy = dummy.next
             index += 1
-        prev = None
         tail = head
+        prev = None
         while tail != None:
-            if n == index:
+            if index == n:
                 if prev:
                     prev.next = tail.next
                     return head

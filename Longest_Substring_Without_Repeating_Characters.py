@@ -2,16 +2,17 @@ import timeit
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        c_list = {}
         length = 0
+        c_list = {}
         anchor = 0
-        for i, c in enumerate(string):
-            if c in c_list and c_list[c] >= anchor:
-                anchor = c_list[c] + 1
+        for i, c in enumerate(s):
+            if c in c_list and c_list[c] >= 0:
+                anchor = 1 + c_list[c]
             else:
-                length = max(length, length + 1 - anchor)
+                length= max(length, length + 1 - anchor)
             c_list[c] = i
         return length
+
 
 
 

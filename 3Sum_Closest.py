@@ -7,7 +7,7 @@ class Solution:
             for n2 in range(len(nums)):                    
                 for n3 in range(len(nums)):
                     if n1 != n2 and n1 != n3 and n2 != n3:
-                        calc_list.append(abs(target -  (n1 + n2 + n3)))
+                        calc_list.append(abs(target - (n1 + n2 + n3)))
         return sorted(calc_list)[0]
         
 

@@ -18,9 +18,9 @@ def make_node(temp, data):
     stack = []
     stack.append(temp)
     while len(stack):
-        temp = stack[0]
-        stack.pop(0)
-        if not temp.left:
+        temp = stack[-1]
+        stack.pop()
+        if temp.left == None:
             if data != None:
                 temp.left = TreeNode(data)
             else:
@@ -36,6 +36,8 @@ def make_node(temp, data):
             break
         else:
             stack.append(temp.right)
+
+
 
 
 def make_tree(elements):

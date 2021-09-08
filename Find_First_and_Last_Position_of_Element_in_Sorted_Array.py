@@ -22,5 +22,5 @@ class Solution:
 if __name__=='__main__':
     s = Solution()
     nums = [5, 7, 7, 8, 8, 10]
-    target = 0
+    target = 8
     print(s.FindIndexes(nums, target))
