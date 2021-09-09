@@ -22,7 +22,7 @@ def Sum2Arrays(arr1, arr2):
 
 
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         list1 = []
         while l1:
             list1.append(l1.val)
