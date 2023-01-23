@@ -14,6 +14,6 @@ class Solution(object):
 
 if __name__ == '__main__':
     s = Solution()
-    nums = [1, 2, 3]
-    k = 3
+    nums = [-1, -1, 1]
+    k = 0
     print(s.subarraySum(nums, k))

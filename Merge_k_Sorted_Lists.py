@@ -36,7 +36,7 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    lists = [[1,4,5],[1,3,4],[2,6],[8,9]]
+    lists = []
     linked_list = []
     for height in lists:
         head = ListAlone(height[0])

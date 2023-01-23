@@ -14,5 +14,5 @@ class Solution:
 
 if __name__=='__main__':
     s = Solution()
-    intervals = [[1,4],[4,5]]
+    intervals = [[1,3],[2,6],[8,10],[15,18]]
     print(s.Merge(intervals))

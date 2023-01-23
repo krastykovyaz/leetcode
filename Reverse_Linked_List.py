@@ -1,25 +1,26 @@
 from typing import List
+
+
 class Node:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
+
 class Solution:
-    def Reverse(self, head: Node)->Node:
-        if head == None or head.next == None:
-            return None
-        dummy = head
+    def Reverse(self, head: Node) -> Node:
+        if head is None or head.next is None:
+            return head
         prev = None
-        while dummy:
-            nxt = dummy.next
-            dummy.next = prev
-            prev = dummy
-            dummy = nxt
-        head = prev
-        return head
+        while head:
+            head_next = head.next
+            head.next = prev
+            prev = head
+            head = head_next
+        return prev
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     s = Solution()
     d = [1, 2, 3, 4, 5]
     lst1 = Node(d[0])
