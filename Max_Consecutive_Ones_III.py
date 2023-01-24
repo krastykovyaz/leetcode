@@ -21,6 +21,6 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    A = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
-    K = 3
+    A = [0,0,0,1]
+    K = 4
     print(s.CountOne(A, K))
