@@ -1,24 +1,35 @@
-from typing import List
+# Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
 
-class Solution:
-    def FindAnagram(self, strs: List[List]):
-        anagram = {}
-        if strs == '':
-            return [['']]
-        for word in strs:
-            sorted_word = ''.join(sorted(list(word)))
-            if sorted_word not in anagram:
-                anagram[sorted_word] = [word]
-            else:
-                anagram[sorted_word].append(word)
-        anagram_list = []
-        for k,v in anagram.items():
-            anagram_list.append(v)
-        return anagram_list
+# An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
+# Example 1:
+
+# Input: 
+strs = ["act","pots","tops","cat","stop","hat"]
+
+# Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
+# Example 2:
+
+# Input: strs = ["x"]
+
+# Output: [["x"]]
+# Example 3:
+
+# Input: strs = [""]
+
+# Output: [[""]]
+
+def group_anagram(strs):
+    from collections import defaultdict
+    storage = defaultdict(list)   
+    for item in strs:
+        alphabet = [0] * 26
+        for c in item:
+            alphabet[ord(c) - ord('a')] += 1 
+        alphabet = tuple(alphabet)
+        storage[alphabet].append(item)
+    return list(storage.values())
 
 
 if __name__=='__main__':
-    s = Solution()
-    strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
-    print(s.FindAnagram(strs))
+    print(group_anagram(strs))

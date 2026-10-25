@@ -1,37 +1,46 @@
-from typing import List
+# Given the beginning of a singly linked list head, reverse the list, and return the new beginning of the list.
 
+# Example 1:
+# Input: 
+head = [0,1,2,3]
+# Output: [3,2,1,0]
 
-class Node:
-    def __init__(self, val=0, next=None):
+# Example 2:
+# Input: head = []
+# Output: []
+
+from typing import Optional
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next_=None):
         self.val = val
-        self.next = next
+        self.next = next_
+
+def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
+    prev = None
+    cur = head
+    while cur:
+        next_ = cur.next
+        cur.next = prev
+        prev = cur
+        cur = next_
+    print_linked_list(prev)
+
+def print_linked_list(head):
+    cur = head
+    while cur:
+        print(cur.val)
+        cur = cur.next
 
 
-class Solution:
-    def Reverse(self, head: Node) -> Node:
-        if head is None or head.next is None:
-            return head
-        prev = None
-        while head:
-            head_next = head.next
-            head.next = prev
-            prev = head
-            head = head_next
-        return prev
+if __name__=='__main__':
+    node = ListNode(head[0])
+    cur = node
+    i = 1
+    while i < len(head):
+        cur.next = ListNode(head[i])
+        cur = cur.next
+        i += 1
+    reverseList(node)
 
-
-if __name__ == '__main__':
-    s = Solution()
-    d = [1, 2, 3, 4, 5]
-    lst1 = Node(d[0])
-    lst = lst1
-    for i in range(1, len(d)):
-        tmp = Node(d[i])
-        lst.next = tmp
-        lst = lst.next
-    n = len(d)
-    head = s.Reverse(lst1)
-    while n:
-        print(head.val)
-        head = head.next
-        n -= 1

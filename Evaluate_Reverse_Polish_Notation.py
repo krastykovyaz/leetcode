@@ -1,29 +1,49 @@
+# You are given an array of strings tokens that represents a valid arithmetic expression in Reverse Polish Notation.
+
+# Return the integer that represents the evaluation of the expression.
+
+# The operands may be integers or the results of other operations.
+# The operators include '+', '-', '*', and '/'.
+# Assume that division between integers always truncates toward zero.
+# Example 1:
+
+# Input: 
+tokens = ["1","2","+","3","*","4","-"]
+
+# Output: 5
+
+# Explanation: ((1 + 2) * 3) - 4 = 5
+
+
 from typing import List
 
-class Solution:
-    def calculator(self, tokens: List[int])->int:
-
-        def operations(sign, n1, n2):
-            if sign == '*':
-                return n1 * n2
-            elif sign == '+':
-                return n1 + n2
-            elif sign == '-':
-                return n2 - n1
-            else:
-                return int(n2 / n1)
-
-        nums = []
-        for token in tokens:
-            if token not in "+-*/":
-                nums.append(int(token))
-            else:
-                nums.append(operations(token, nums.pop(), nums.pop()))
-        return nums[-1]
-
-
+def evalRPN(tokens: List[str]) -> int:
+    stack = []
+    for i in range(len(tokens)):
+        if (tokens[i]).isnumeric():
+            stack.append(int(tokens[i]))
+        elif len(tokens[i]) > 1 and tokens[i][0] == '-':
+            stack.append(int(tokens[i]))
+        else:
+            if tokens[i] == '+':
+                count = stack[-1] + stack[-2]
+                stack = stack[:-2]
+                stack.append(count)
+            elif tokens[i] == '*':
+                count = stack[-1] * stack[-2]
+                stack = stack[:-2]
+                stack.append(count)
+            elif tokens[i] == '-':
+                count = stack[-2] - stack[-1]
+                stack = stack[:-2]
+                stack.append(count)
+            elif tokens[i] == '/':
+                count = int(str(stack[-2] / stack[-1] ).split('.')[0])
+                stack = stack[:-2]
+                # print(count)
+                stack.append(count)
+    return stack[-1]
 
 if __name__=='__main__':
-    nums = ["4", "13", "5", "/", "+"]
-    s = Solution()
-    print(s.calculator(nums))
+    tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
+    print(evalRPN(tokens))
